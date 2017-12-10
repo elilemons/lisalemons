@@ -25,31 +25,43 @@
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'lisalemons' ); ?></a>
 
 	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) : ?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-			<?php else : ?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-			<?php
-			endif;
+        <nav id="site-navigation" class="border-bottom-yellow navbar navbar-expand-md navbar-dark bg-dark">
+            <div class="container">
+                <!-- Your site title as branding in the menu -->
+                <?php if ( ! has_custom_logo() ) { ?>
 
-			$description = get_bloginfo( 'description', 'display' );
-			if ( $description || is_customize_preview() ) : ?>
-				<p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
-			<?php
-			endif; ?>
-		</div><!-- .site-branding -->
+                <?php if ( is_front_page() && is_home() ) : ?>
 
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'lisalemons' ); ?></button>
-			<?php
-				wp_nav_menu( array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
-				) );
-			?>
+                    <h1 class="navbar-brand site-title mb-0"><a rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
+
+                <?php else : ?>
+
+                    <a class="navbar-brand site-title" rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>"><?php bloginfo( 'name' ); ?></a>
+
+                <?php endif; ?>
+
+
+                <?php } else {
+                    the_custom_logo();
+                } ?><!-- end custom logo -->
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- The WordPress Menu goes here -->
+	            <?php wp_nav_menu(
+		            array(
+			            'theme_location'  => 'menu-1',
+			            'container_class' => 'collapse navbar-collapse',
+			            'container_id'    => 'navbarNavDropdown',
+			            'menu_class'      => 'navbar-nav',
+			            'fallback_cb'     => '',
+			            'menu_id'         => 'primary-menu',
+			            'walker'          => new WP_Bootstrap_Navwalker(),
+		            )
+	            ); ?>
+
+            </div><!-- .container -->
 		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->
 

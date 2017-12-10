@@ -6,8 +6,13 @@ optgroup,
 textarea {
 	color: $color__text-main;
 	font-family: $font__mono;
-	@include font-size(1);
+    font-weight: $font__weight-light;
+	@include font-size(.9);
 	line-height: $font__line-height-body;
+
+    @media screen and (min-width: 700px) {
+      @include font-size(1);
+    }
 }
 
 @import "headings";

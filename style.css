@@ -32,10 +32,10 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 # Accessibility
 # Alignments
 # Clearings
-# Widgets
 # Content
 	## Posts and pages
 	## Comments
+# Widgets
 # Infinite scroll
 # Media
 	## Captions
@@ -266,17 +266,54 @@ input,
 select,
 optgroup,
 textarea {
-	color: #404040;
+	color: #333;
 	font-family: "Roboto Mono", Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
-	font-size: 16px;
-	font-size: 1rem;
+	font-weight: 400;
+	font-size: 16.2px;
+	font-size: 1.0125rem;
 	line-height: 1.5;
+}
+
+@media screen and (min-width: 700px) {
+	body,
+	button,
+	input,
+	select,
+	optgroup,
+	textarea {
+		font-size: 18px;
+		font-size: 1.125rem;
+	}
 }
 
 h1, h2, h3, h4, h5, h6 {
 	clear: both;
 	font-family: "Roboto", sans-serif;
 	font-weight: 900;
+}
+
+h1, .h1 {
+	font-size: 3em;
+}
+
+h2, .h2 {
+	font-size: 2.6em;
+}
+
+h3, .h3 {
+	font-size: 2.2em;
+}
+
+h4, .h4 {
+	font-size: 2em;
+}
+
+h5, .h5 {
+	font-size: 1.8em;
+}
+
+h6, .h6 {
+	font-size: 1.6em;
 }
 
 p {
@@ -298,8 +335,8 @@ address {
 pre {
 	background: #eee;
 	font-family: "Courier 10 Pitch", Courier, monospace;
-	font-size: 15px;
-	font-size: 0.9375rem;
+	font-size: 16.875px;
+	font-size: 1.05469rem;
 	line-height: 1.6;
 	margin-bottom: 1.6em;
 	max-width: 100%;
@@ -309,8 +346,8 @@ pre {
 
 code, kbd, tt, var {
 	font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
-	font-size: 15px;
-	font-size: 0.9375rem;
+	font-size: 16.875px;
+	font-size: 1.05469rem;
 }
 
 abbr, acronym {
@@ -398,6 +435,10 @@ table {
 	width: 100%;
 }
 
+.border-bottom-yellow {
+	border-bottom: 10px solid #FFBE00;
+}
+
 /*--------------------------------------------------------------
 # Forms
 --------------------------------------------------------------*/
@@ -410,8 +451,8 @@ input[type="submit"] {
 	border-radius: 3px;
 	background: #e6e6e6;
 	color: rgba(0, 0, 0, 0.8);
-	font-size: 12px;
-	font-size: 0.75rem;
+	font-size: 13.5px;
+	font-size: 0.84375rem;
 	line-height: 1;
 	padding: .6em 1em .4em;
 }
@@ -489,15 +530,15 @@ textarea {
 ## Links
 --------------------------------------------------------------*/
 a {
-	color: royalblue;
+	color: #FFBE00;
 }
 
 a:visited {
-	color: purple;
+	color: #FFBE00;
 }
 
 a:hover, a:focus, a:active {
-	color: midnightblue;
+	color: #FFBE00;
 }
 
 a:focus {
@@ -630,8 +671,8 @@ a:hover, a:active {
 	        clip-path: none;
 	color: #21759b;
 	display: block;
-	font-size: 14px;
-	font-size: 0.875rem;
+	font-size: 15.75px;
+	font-size: 0.98438rem;
 	font-weight: bold;
 	height: auto;
 	left: 5px;
@@ -701,18 +742,6 @@ a:hover, a:active {
 }
 
 /*--------------------------------------------------------------
-# Widgets
---------------------------------------------------------------*/
-.widget {
-	margin: 0 0 1.5em;
-	/* Make sure select elements fit in widgets. */
-}
-
-.widget select {
-	max-width: 100%;
-}
-
-/*--------------------------------------------------------------
 # Content
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
@@ -742,6 +771,14 @@ a:hover, a:active {
 }
 
 /*--------------------------------------------------------------
+## Posts and pages
+--------------------------------------------------------------*/
+.site-title {
+	font-family: "Shadows Into Light", "Roboto Mono", Courier, Monaco, Consolas, monospace;
+	font-weight: 600;
+}
+
+/*--------------------------------------------------------------
 ## Comments
 --------------------------------------------------------------*/
 .comment-content a {
@@ -750,6 +787,18 @@ a:hover, a:active {
 
 .bypostauthor {
 	display: block;
+}
+
+/*--------------------------------------------------------------
+# Widgets
+--------------------------------------------------------------*/
+.widget {
+	margin: 0 0 1.5em;
+	/* Make sure select elements fit in widgets. */
+}
+
+.widget select {
+	max-width: 100%;
 }
 
 /*--------------------------------------------------------------

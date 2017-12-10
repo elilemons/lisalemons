@@ -96,6 +96,7 @@ function lisalemons_fonts_url() {
 	 */
 	$roboto    = _x( 'on', 'Roboto: on or off', 'lisalemons' );
 	$roboto_mono    = _x( 'on', 'Roboto Mono: on or off', 'lisalemons' );
+	$shadows_in_light = _x ('on', 'Shadows in Light: on or off', 'lisalemons');
 
 	$font_families = array();
 
@@ -104,11 +105,14 @@ function lisalemons_fonts_url() {
 	}
 
 	if ( 'off' !== $roboto_mono ) {
-		$font_families[] = 'Roboto Mono:400,400i,700,700i';
+		$font_families[] = 'Roboto Mono:400,400i,600,500i,700,700i';
 	}
 
+	if ( 'off' !== $shadows_in_light ) {
+		$font_families[] = 'Shadows Into Light';
+	}
 
-	if ( in_array( 'on', array($roboto, $roboto_mono) ) ) {
+	if ( in_array( 'on', array($roboto, $roboto_mono, $shadows_in_light) ) ) {
 
 		$query_args = array(
 			'family' => urlencode( implode( '|', $font_families ) ),
@@ -178,6 +182,7 @@ add_action( 'widgets_init', 'lisalemons_widgets_init' );
  */
 function lisalemons_scripts() {
 	wp_enqueue_style ('lisalemons-bootstrap', get_template_directory_uri() . '/bootstrap/css/bootstrap.css');
+	wp_enqueue_style ('lisalemons-custom-bootstrap', get_template_directory_uri() . '/bootstrap/css/custom-bootstrap.css');
 	// Enqueue Google Fonts
 	wp_enqueue_style( 'lisalemons-fonts', lisalemons_fonts_url() );
 	wp_enqueue_style( 'lisalemons-style', get_stylesheet_uri() );
@@ -191,6 +196,11 @@ function lisalemons_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'lisalemons_scripts' );
+
+/**
+ * Implement the Bootstrap Walker
+ */
+require get_template_directory() . '/inc/bootstrap-wp-navwalker.php';
 
 /**
  * Implement the Custom Header feature.

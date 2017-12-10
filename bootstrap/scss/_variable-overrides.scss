@@ -1,0 +1,20 @@
+$yellow:  #ffbe00;
+$gray-222: #222;
+$gray-333: #333;
+$gray-3c3: #3c3c3c;
+$dark:          $gray-222;
+
+$grays: () !default;
+$grays: map-merge((
+        "222": $gray-222,
+        "333": $gray-333,
+        "3c3": $gray-3c3
+), $grays);
+
+$colors: () !default;
+$colors: map-merge((
+        "gray":       $gray-3c3,
+        "gray-dark":  $gray-333,
+        "gray-black": $gray-222
+), $colors);
+
